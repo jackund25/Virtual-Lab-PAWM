@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+    background-color: white;
+  }
+  
+  body {
+    background-color: white;
+    color: #333;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .login-btn {
+    background: none;
+    border: 1px solid #333;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #333;
+    color: white;
+  }
+  
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .card {
+    background-color: #D2E0FB;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  .card h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: BLACK;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #D2E0FB;
+  }
+  
+  .card p {
+    font-size: 1.2rem;
+    color: #333;
+    background-color: #D2E0FB;
+  }
+  
+  .quetos-text{
+    text-align: center;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .center-button {
+    width: auto;
+    min-width: max-content;
+    border: none;
+    border-radius: 10%;
+    cursor: pointer;
+    font-size: 10px; /* Adjust the font size to fit the button */
+    padding: 10px 20px; /* Optional padding if needed */
+    text-align: center;
+    background-color: lightgreen;
+    transition: 1s;
+  }
+  
+  .center-button:hover {
+    background-color: #28a267;
+  }
+  
+  .hero-image img {
+    max-width: 400px;
+  }
+  
+  footer {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 40px;
+    background-color: white;
+  }
+  
+  .categories {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .category {
+    text-align: center;
+  }
+  
+  .category img {
+    max-width: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .category p {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
