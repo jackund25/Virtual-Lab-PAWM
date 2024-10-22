@@ -5,13 +5,13 @@
     menu.addEventListener('click', function() {
         menu.classList.toggle('is-active');
         menuLinks.classList.toggle('active');
-    }) 
+    })
 
     // Micro Interaction di logo
     var image = document.querySelector('.nb-container img');
     var threshold = 30; // Distance in pixels
     
-    // Function to calculate the distance between the cursor and the image
+    // Function untuk menghitung jarak dari image
     function getDistanceFromImage(e, image) {
         var rect = image.getBoundingClientRect();
         var imageX = rect.left + rect.width / 2;
@@ -21,13 +21,13 @@
         return Math.sqrt(distX * distX + distY * distY);
     }
     
-    // Event listener for mousemove on the document
+    // Event listener
     document.addEventListener('mousemove', function(e) {
         var distance = getDistanceFromImage(e, image);
     
         if (distance < threshold) {
-            image.src = 'images/growth.gif'; // Replace PNG with GIF if close enough
+            image.src = 'images/growth.gif';
         } else {
-            image.src = 'images/growth.png'; // Revert to PNG if far
+            image.src = 'images/growth.png';
         }
     });

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Momentum Lab</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nb-container">
+        <a href="home.html" id="nb-logo"
+          ><img src="images/growth.png" alt="My Rocket" /> Let's Physics</a
+        >
+        <div class="nb-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="nb-menu">
+          <li class="nb-items">
+            <a href="home.html" class="nb-links">Beranda</a>
+          </li>
+          <li>
+            <a href="#" class="nb-links">Tentang Kami</a>
+          </li>
+          <li class="nb-btn"><a href="#" class="button">Sign Up</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <h1>Interactive Momentum Lab</h1>
+      <div class="controls">
+        <label for="num-objects">Number of Objects:</label>
+        <select id="num-objects">
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+
+        <label for="speed">Speed (m/s): </label>
+        <input type="range" id="speed" min="0" max="100" value="50" />
+        <span id="speed-value">50</span>
+
+        <label for="weight">Weight (kg): </label>
+        <input type="range" id="weight" min="1" max="100" value="50" />
+        <span id="weight-value">50</span>
+
+        <label for="distance">Distance (m): </label>
+        <input type="range" id="distance" min="0" max="100" value="50" />
+        <span id="distance-value">50</span>
+
+        <label for="collision-type">Collision Type:</label>
+        <select id="collision-type">
+          <option value="elastic">Elastic</option>
+          <option value="inelastic">Inelastic</option>
+        </select>
+
+        <label for="direction">Direction: </label>
+        <select id="direction">
+          <option value="left">Left</option>
+          <option value="right">Right</option>
+        </select>
+
+        <button onclick="simulate()">Simulate</button>
+      </div>
+
+      <canvas id="simulationCanvas" width="800" height="400"></canvas>
+    </div>
+    <script src="momentum.js"></script>
+  </body>
+</html>

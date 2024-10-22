@@ -3,10 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Let's Physics</title>
-    <link rel="stylesheet" href="home.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
     </style>
@@ -15,7 +17,8 @@
     <!-- Navbar -->
     <nav class="navbar">
       <div class="nb-container">
-        <a href="#" id="nb-logo"><img src="images/growth.png" alt="My Rocket"> Let's Physics</a>
+        <a href="home.html" id="nb-logo"
+          ><img src="images/growth.png" alt="My Rocket" /> Let's Physics</a>
         <div class="nb-toggle" id="mobile-menu">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -23,44 +26,123 @@
         </div>
         <ul class="nb-menu">
           <li class="nb-items">
-            <a href="#" class="nb-links">Beranda</a>
+            <a href="home.html" class="nb-links">Beranda</a>
           </li>
-          <li class="nb-items">
+          <li>
             <a href="#" class="nb-links">Tentang Kami</a>
           </li>
-          <li class="nb-btn">
-            <a href="#" class="button">Log In</a>
-          </li>
+          <li class="nb-btn"><a href="#" class="button">Get Started</a></li>
         </ul>
       </div>
     </nav>
 
     <!-- Hero -->
     <div class="main">
-        <div class="main-container">
-            <div class="main-content">
-                <h1>Virtual Lab<br>Interaktif</h1>
-                <div class="card">
-                  <P>
-                    <i>Science is beautiful when it makes simple explanations of phenomena
-                        or connections between different observations. Examples include the double helix in biology 
-                        and the fundamental equations of physics.<br> -Stephen Hawking</i>            
-                  </P>
-                </div>
-                <button class="main-btn"><a href="#">Ayo Mulai!</a></button>
-            </div>
-            <div class="main-img-container">
-              <img src="images/pic1.svg" alt="Experiment Pic" id="main-img">
-            </div>
+      <div class="main-container">
+        <div class="main-content">
+          <h1>Virtual Lab</h1>
+          <h2>Interaction</h2>
+          <p>
+            <i
+              >Science is beautiful when it makes simple explanations of
+              phenomena or connections between different observations. Examples
+              include the double helix in biology and the fundamental equations
+              of physics.<br />
+              -Stephen Hawking</i
+            >
+          </p>
+          <button class="main-btn"><a href="pilihKonten.html">Mulai</a></button>
         </div>
+        <div class="main-img-container">
+          <img id="main-img" src="images/pic1.svg" alt="Experiment Pic" />
+        </div>
+      </div>
     </div>
 
-    <!-- Pilih Konten -->
-    <div>
-      
+    <!-- Footer -->
+    <div class="footer-container">
+      <div class="footer-links">
+        <div class="footer-link-wrapper">
+          <div class="footer-link-items">
+            <h2>Tentang Kami</h2>
+            <a href="/sign__up">How it works</a> <a href="#">Testimonials</a>
+            <a href="#">Careers</a> <a href="#">Investments</a>
+            <a href="#">Terms of Service</a>
+          </div>
+          <div class="footer-link-items">
+            <h2>Contact Us</h2>
+            <a href="#">Contact</a> <a href="#">Support</a>
+            <a href="#">Destinations</a> <a href="#">Sponsorships</a>
+          </div>
+        </div>
+        <div class="footer-link-wrapper">
+          <div class="footer-link-items">
+            <h2>Videos</h2>
+            <a href="#">Submit Video</a> <a href="#">Ambassadors</a>
+            <a href="#">Agency</a> <a href="#">Influencer</a>
+          </div>
+          <div class="footer-link-items">
+            <h2>Social Media</h2>
+            <a href="#">Instagram</a> <a href="#">Facebook</a>
+            <a href="#">Youtube</a> <a href="#">Twitter</a>
+          </div>
+        </div>
+      </div>
+      <section class="social-media">
+        <div class="social-media-wrap">
+          <div class="footer-logo">
+            <a href="#" id="footer-logo"
+              ><img class="footer-icon-img" src="images/growth.png">Let's Physics</a
+            >
+          </div>
+          <p class="website-rights">
+            © Let's Physics 2024. All rights reserved
+          </p>
+          <div class="social-icons">
+            <a
+              class="social-icon-link"
+              href="#"
+              target="_blank"
+              aria-label="Facebook"
+            >
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a
+              class="social-icon-link"
+              href="#"
+              target="_blank"
+              aria-label="Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              class="social__icon--link"
+              href="#"
+              target="_blank"
+              aria-label="Youtube"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a
+              class="social-icon-link"
+              href="#"
+              target="_blank"
+              aria-label="Twitter"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              class="social-icon-link"
+              href="#"
+              target="_blank"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
-
-
-    <script src="app.js"></script>
+    <script src="home.js"></script>
   </body>
 </html>
