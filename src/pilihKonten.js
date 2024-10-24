@@ -64,11 +64,11 @@
     prevBtn.addEventListener('click', () => {
     scrollAmount -= carousel.offsetWidth;
     if (scrollAmount < 0) {
-        scrollAmount = 0;
+        scrollAmount = carousel.offsetWidth;
     }
     carousel.style.transform = `translateX(-${scrollAmount}px)`;
     });
-    
+
 
     // Toggle mobile
     const menu = document.querySelector('#mobile-menu');
