@@ -583,31 +583,43 @@
   }
 }
 
-/* Course Momentum */
-.container {
-  text-align: center;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Momentum Lab */
+.momentum-part-body {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .controls {
-  margin-bottom: 20px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f5f5f5;
 }
 
-.label {
-  display: block;
-  margin: 10px 0;
+.controls label {
+  display: inline-block;
+  width: 120px;
+  margin: 5px;
 }
 
-.input[type="range"] {
-  width: 200px;
+.momentum-canvas {
+  border: 2px solid #333;
+  margin: 20px;
 }
 
-#simulationCanvas {
-  border: 1px solid black;
-  background-color: #eaeaea;
-  display: block;
-  margin: 20px auto;
+.momentum-button {
+  margin: 10px;
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.momentum-button:hover {
+  background-color: #45a049;
 }

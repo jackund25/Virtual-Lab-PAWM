@@ -29,44 +29,37 @@
         </ul>
       </div>
     </nav>
-    <div class="container">
-      <h1>Interactive Momentum Lab</h1>
+    <div class="momentum-part-body">
       <div class="controls">
-        <label for="num-objects">Number of Objects:</label>
-        <select id="num-objects">
-          <option value="1">1</option>
-          <option value="2">2</option>
-        </select>
-
-        <label for="speed">Speed (m/s): </label>
-        <input type="range" id="speed" min="0" max="100" value="50" />
-        <span id="speed-value">50</span>
-
-        <label for="weight">Weight (kg): </label>
-        <input type="range" id="weight" min="1" max="100" value="50" />
-        <span id="weight-value">50</span>
-
-        <label for="distance">Distance (m): </label>
-        <input type="range" id="distance" min="0" max="100" value="50" />
-        <span id="distance-value">50</span>
-
-        <label for="collision-type">Collision Type:</label>
-        <select id="collision-type">
-          <option value="elastic">Elastic</option>
-          <option value="inelastic">Inelastic</option>
-        </select>
-
-        <label for="direction">Direction: </label>
-        <select id="direction">
-          <option value="left">Left</option>
-          <option value="right">Right</option>
-        </select>
-
-        <button onclick="simulate()">Simulate</button>
+        <div>
+            <label>Ball 1 Mass:</label>
+            <input type="number" id="mass1" value="0.5" min="0.1" step="0.1">
+        </div>
+        <div>
+            <label>Ball 1 Velocity:</label>
+            <input type="number" id="velocity1" value="1.0" step="0.1">
+        </div>
+        <div>
+            <label>Ball 2 Mass:</label>
+            <input type="number" id="mass2" value="1.5" min="0.1" step="0.1">
+        </div>
+        <div>
+            <label>Ball 2 Velocity:</label>
+            <input type="number" id="velocity2" value="-0.5" step="0.1">
+        </div class="momentum-button">
+        <button onclick="resetSimulation()">Reset</button>
+        <button onclick="toggleSimulation()">Start/Stop</button>
       </div>
-
-      <canvas id="simulationCanvas" width="800" height="400"></canvas>
+  
+      <canvas clas="momentum-canvas" id="simulationCanvas" width="800" height="400"></canvas>
+    
+      <div id="measurements">
+          <h3>Measurements</h3>
+          <p>Total Momentum: <span id="totalMomentum">0</span> kg⋅m/s</p>
+          <p>Total Kinetic Energy: <span id="totalEnergy">0</span> J</p>
+      </div>
     </div>
+    
     <script src="momentum.js"></script>
   </body>
 </html>

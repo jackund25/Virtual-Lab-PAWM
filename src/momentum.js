@@ -1,115 +1,128 @@
-// Get DOM elements
-const speedInput = document.getElementById("speed");
-const speedValue = document.getElementById("speed-value");
-const weightInput = document.getElementById("weight");
-const weightValue = document.getElementById("weight-value");
-const distanceInput = document.getElementById("distance");
-const distanceValue = document.getElementById("distance-value");
-const collisionTypeInput = document.getElementById("collision-type");
-const directionInput = document.getElementById("direction");
-const numObjectsInput = document.getElementById("num-objects");
+const canvas = document.getElementById('simulationCanvas');
+const ctx = canvas.getContext('2d');
+let animationId;
+let isRunning = false;
 
-const canvas = document.getElementById("simulationCanvas");
-const ctx = canvas.getContext("2d");
+class Ball {
+    constructor(x, y, mass, velocity, color) {
+        this.x = x;
+        this.y = y;
+        this.mass = mass;
+        this.velocity = velocity;
+        this.radius = Math.sqrt(mass) * 20;
+        this.color = color;
+    }
 
-// Update range values on input change
-speedInput.oninput = () => speedValue.textContent = speedInput.value;
-weightInput.oninput = () => weightValue.textContent = weightInput.value;
-distanceInput.oninput = () => distanceValue.textContent = distanceInput.value;
-
-// Object properties
-let objects = [{
-    speed: 50,
-    weight: 50,
-    x: 100, // initial x position
-    y: 200, // constant y position
-    radius: 20,
-    direction: "right"
-}, {
-    speed: 50,
-    weight: 50,
-    x: 700, // second object initial position
-    y: 200, // same y position as first object
-    radius: 20,
-    direction: "left"
-}];
-
-// Draw the objects on the canvas
-function drawObjects() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    objects.forEach((object) => {
+    draw() {
         ctx.beginPath();
-        ctx.arc(object.x, object.y, object.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "blue";
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
         ctx.fill();
-        ctx.closePath();
-    });
-}
-
-// Function to simulate the movement
-function simulate() {
-    const numObjects = parseInt(numObjectsInput.value);
-
-    // Update the object properties for the first object
-    objects[0].speed = parseInt(speedInput.value);
-    objects[0].weight = parseInt(weightInput.value);
-    objects[0].direction = directionInput.value;
-    objects[0].x = objects[0].direction === "right" ? 100 : canvas.width - 100;
-
-    // If two objects are selected, reset the second object
-    if (numObjects === 2) {
-        objects[1].speed = parseInt(speedInput.value);
-        objects[1].weight = parseInt(weightInput.value);
-        objects[1].direction = objects[0].direction === "right" ? "left" : "right";
-        objects[1].x = objects[1].direction === "right" ? canvas.width - 100 : 100;
+        ctx.stroke();
+        
+        // Draw velocity vector
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x + this.velocity * 50, this.y);
+        ctx.strokeStyle = 'black';
+        ctx.stroke();
     }
 
-    // Start the animation
-    animate(numObjects);
+    update() {
+        this.x += this.velocity;
+        
+        // Bounce off walls
+        if (this.x - this.radius <= 0 || this.x + this.radius >= canvas.width) {
+            this.velocity *= -1;
+        }
+    }
 }
 
-// Animation function to move the objects
-function animate(numObjects) {
-    drawObjects();
+let ball1 = new Ball(200, canvas.height/2, 0.5, 1.0, '#87CEEB');
+let ball2 = new Ball(600, canvas.height/2, 1.5, -0.5, '#FF69B4');
 
-    // Move the first object based on speed and direction
-    if (objects[0].direction === "right") {
-        objects[0].x += objects[0].speed / 10;
-    } else {
-        objects[0].x -= objects[0].speed / 10;
-    }
-
-    // Move the second object if selected
-    if (numObjects === 2) {
-        if (objects[1].direction === "right") {
-            objects[1].x += objects[1].speed / 10;
+function checkCollision(b1, b2) {
+    const dx = b2.x - b1.x;
+    const distance = Math.abs(dx);
+    
+    if (distance <= b1.radius + b2.radius) {
+        // Elastic collision formulas
+        const v1 = ((b1.mass - b2.mass) * b1.velocity + 2 * b2.mass * b2.velocity) / (b1.mass + b2.mass);
+        const v2 = ((b2.mass - b1.mass) * b2.velocity + 2 * b1.mass * b1.velocity) / (b1.mass + b2.mass);
+        
+        b1.velocity = v1;
+        b2.velocity = v2;
+        
+        // Separate balls to prevent sticking
+        const overlap = b1.radius + b2.radius - distance;
+        const shift = overlap / 2;
+        
+        if (dx > 0) {
+            b1.x -= shift;
+            b2.x += shift;
         } else {
-            objects[1].x -= objects[1].speed / 10;
+            b1.x += shift;
+            b2.x -= shift;
         }
-
-        // Check for collision between the two objects
-        if (Math.abs(objects[0].x - objects[1].x) <= objects[0].radius * 2) {
-            handleCollision();
-        }
-    }
-
-    // Continue animating if objects are within canvas bounds
-    if (objects[0].x < canvas.width && objects[0].x > 0) {
-        requestAnimationFrame(() => animate(numObjects));
     }
 }
 
-// Handle collision based on the type
-function handleCollision() {
-    const collisionType = collisionTypeInput.value;
+function updateMeasurements() {
+    const totalMomentum = ball1.mass * ball1.velocity + ball2.mass * ball2.velocity;
+    const totalEnergy = 0.5 * ball1.mass * ball1.velocity * ball1.velocity + 
+                      0.5 * ball2.mass * ball2.velocity * ball2.velocity;
+    
+    document.getElementById('totalMomentum').textContent = totalMomentum.toFixed(2);
+    document.getElementById('totalEnergy').textContent = totalEnergy.toFixed(2);
+}
 
-    if (collisionType === "elastic") {
-        // Reverse directions for both objects in elastic collision
-        objects[0].direction = objects[0].direction === "right" ? "left" : "right";
-        objects[1].direction = objects[1].direction === "right" ? "left" : "right";
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    ball1.update();
+    ball2.update();
+    
+    checkCollision(ball1, ball2);
+    
+    ball1.draw();
+    ball2.draw();
+    
+    updateMeasurements();
+    
+    if (isRunning) {
+        animationId = requestAnimationFrame(animate);
+    }
+}
+
+function toggleSimulation() {
+    isRunning = !isRunning;
+    if (isRunning) {
+        animate();
     } else {
-        // Stop both objects in inelastic collision
-        objects[0].speed = 0;
-        objects[1].speed = 0;
+        cancelAnimationFrame(animationId);
     }
 }
+
+function resetSimulation() {
+    ball1 = new Ball(200, canvas.height/2, 
+        parseFloat(document.getElementById('mass1').value),
+        parseFloat(document.getElementById('velocity1').value),
+        '#87CEEB');
+    
+    ball2 = new Ball(600, canvas.height/2,
+        parseFloat(document.getElementById('mass2').value),
+        parseFloat(document.getElementById('velocity2').value),
+        '#FF69B4');
+    
+    if (!isRunning) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ball1.draw();
+        ball2.draw();
+        updateMeasurements();
+    }
+}
+
+// Initial draw
+ball1.draw();
+ball2.draw();
+updateMeasurements();
