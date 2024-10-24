@@ -68,6 +68,7 @@
     }
     carousel.style.transform = `translateX(-${scrollAmount}px)`;
     });
+    
 
     // Toggle mobile
     const menu = document.querySelector('#mobile-menu');

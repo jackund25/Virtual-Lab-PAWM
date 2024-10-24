@@ -507,7 +507,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  max-width: 80%;
+  max-width: 100%;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -520,7 +520,8 @@
 }
 
 .card {
-  min-width: 25%;
+  flex-shrink: 0; /* Prevent cards from shrinking */
+  min-width: 25%; /* For desktop view */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin: 0 10px;
@@ -580,10 +581,11 @@
 
 @media (max-width: 768px) {
   .card {
+    flex-basis: 100%;
     min-width: 50%; /* Show two cards on smaller screens */
   }
   .carousel-container {
-    max-width: 100%;
+    width: 100%;
   }
 }
 
