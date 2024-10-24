@@ -3,7 +3,7 @@
     var pilihKontenimg2 = document.querySelector('#img2');
     var pilihKontenimg3 = document.querySelector('#img3');
     var pilihKontenimg4 = document.querySelector('#img4');
-    var threshold1 = 50;
+    var threshold1 = 20;
 
     // Event listener for mousemove on the document
     document.addEventListener('mousemove', function(e) {
@@ -47,40 +47,27 @@
     });
 
     // // Dragger Section
-    // var swiper = new Swiper(".slide-content", {
-    //     slidesPerView: 3,
-    //     spaceBetween: 30,
-    //     loop: true,
-    //     pagination: {
-    //       el: ".swiper-pagination",
-    //       clickable: true,
-    //     },
-    //     navigation: {
-    //       nextEl: ".swiper-button-next",
-    //       prevEl: ".swiper-button-prev",
-    //     },
-    //   });
     
-const carousel = document.getElementById('carousel');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-let scrollAmount = 0;
+    const carousel = document.getElementById('carousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let scrollAmount = 0;
 
-nextBtn.addEventListener('click', () => {
-  scrollAmount += carousel.offsetWidth;
-  if (scrollAmount >= carousel.scrollWidth) {
-    scrollAmount = 0;
-  }
-  carousel.style.transform = `translateX(-${scrollAmount}px)`;
-});
+    nextBtn.addEventListener('click', () => {
+    scrollAmount += carousel.offsetWidth;
+    if (scrollAmount >= carousel.scrollWidth) {
+        scrollAmount = 0;
+    }
+    carousel.style.transform = `translateX(-${scrollAmount}px)`;
+    });
 
-prevBtn.addEventListener('click', () => {
-  scrollAmount -= carousel.offsetWidth;
-  if (scrollAmount < 0) {
-    scrollAmount = 0;
-  }
-  carousel.style.transform = `translateX(-${scrollAmount}px)`;
-});
+    prevBtn.addEventListener('click', () => {
+    scrollAmount -= carousel.offsetWidth;
+    if (scrollAmount < 0) {
+        scrollAmount = 0;
+    }
+    carousel.style.transform = `translateX(-${scrollAmount}px)`;
+    });
 
     // Toggle mobile
     const menu = document.querySelector('#mobile-menu');
@@ -94,7 +81,7 @@ prevBtn.addEventListener('click', () => {
     // Micro Interaction di logo
     var image = document.querySelector('.nb-container img');
     var threshold = 30; // Distance in pixels
-    
+        
     // Function untuk menghitung jarak dari image
     function getDistanceFromImage(e, image) {
         var rect = image.getBoundingClientRect();
