@@ -362,8 +362,19 @@
 }
 
 /* Footer CSS */
+footer {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  bottom: 0;
+}
+
 .footer-container {
-  background-color: #77CDFF;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #77CDFF;
   padding: 0;
   margin: 0;
   display: flex;
@@ -509,6 +520,7 @@
   position: relative;
   max-width: 100%;
   margin: 0 auto;
+  padding-bottom: 10px;
   overflow: hidden;
 }
 
